@@ -1,0 +1,498 @@
+
+:root{--brand:#e74a4a;--cyan:#1db8c1;--text:#1a1a1a;--muted:#667085;--bg:#fff;--bg-alt:#f7fafc;--border:#e5e7eb;--radius:14px;--shadow:0 10px 30px rgba(0,0,0,.06)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--text);background:var(--bg);font:16px/1.7 "Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+img {
+  max-width: 100%;     /* 枠からはみ出さない */
+  height: auto;        /* 縦横比を保持して縮小 */
+  object-fit: contain; /* 切らずに全体を表示 */
+  display: block;      /* インライン要素の余白を消す */
+  margin: 0 auto;      /* 中央寄せ */
+}
+.container{max-width:1040px;margin-inline:auto;padding-inline:20px}
+.site-header{border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:20}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand img{height:40px}
+nav a{color:#333;font-weight:700;text-decoration:none;margin-left:18px}
+nav a:hover{color:var(--brand)}
+.hero{display:grid;grid-template-columns:1fr;gap:6px;border-bottom:1px solid var(--border)}
+.hero img{width:100%;object-fit:cover}
+.letter-img{display:block;width:80%;margin:16px auto;}
+.section{padding:56px 0}
+.section.alt{background:var(--bg-alt)}
+.section-title{text-align:center;margin:0 0 28px;font-size:clamp(22px,3vw,30px);letter-spacing:.08em}
+.section-title .em{color:var(--brand)}
+.profiles{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:840px;margin:0 auto}
+.profile{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);text-align:center}
+.profile .avatar{max-width:380px;margin:0 auto 12px;border-radius:12px;overflow:hidden }
+.profile .avatar img {
+  display: block;
+  margin: 0 auto;   /* 追加：写真だけ中央揃え */
+}
+.profile h4{margin:0 0 8px}
+.profile-text{text-align:left;white-space:pre-line}
+.highlight{color:#e74a4a;font-weight:700}
+.highlight-big{color:#e74a4a;font-weight:800;font-size:1.2em}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.video-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);text-align:center}
+.video-card img{border-radius:var(--radius) var(--radius) 0 0;margin-bottom:12px}
+.btn{display:inline-block;margin:6px;padding:10px 18px;border-radius:999px;background:var(--cyan);color:#fff;text-decoration:none;font-weight:700}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.gallery-4{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.site-footer{padding:28px 0;border-top:1px solid var(--border);margin-top:56px;background:#fff}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.copy{color:#98a2b3;font-size:14px}
+@media (max-width: 900px){
+  .profiles{grid-template-columns:1fr}
+  .video-grid{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:1fr 1fr}
+  .gallery-4{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+}
+@media (max-width: 600px){
+  .section{padding:36px 0}
+  .photo-grid{grid-template-columns:1fr}
+}
+
+
+/* === Thanks (image + text split) === */
+#thanks{background:linear-gradient(180deg,#eef7ff, #ffffff)}
+#thanks.has-bg{background: url('assets/images/thanks-bg.jpg') center/cover no-repeat;}
+.thanks-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:center}
+.thanks-media img{border-radius:var(--radius);box-shadow:var(--shadow)}
+.thanks-text{background:rgba(255,255,255,.85);padding:16px 20px;border-radius:var(--radius);line-height:1.9}
+.thanks-text p{margin:0 0 12px}
+.thanks-text .sign{text-align:right;color:#666}
+@media(max-width: 900px){
+  .thanks-wrap{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+  .gallery-4{grid-template-columns:1fr}
+}
+
+
+/* Finals center alignment */
+#finals .video-grid{justify-content:center;grid-template-columns:1fr;max-width:640px;margin:0 auto}
+#finals .video-card{text-align:center}
+
+
+/* === Center cards but keep text left; buttons centered === */
+#videos-kido .video-grid,
+#videos-sakurai .video-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  gap:16px;
+  justify-content:center;
+}
+
+#videos-kido .video-card,
+#videos-sakurai .video-card,
+#finals .video-card{
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: left; /* text left */
+}
+
+.video-card .body{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.video-card .body .btn{
+  align-self:center; /* center only buttons */
+}
+
+/* HERO images centered */
+.hero img{
+  display:block;
+  margin: 0 auto;
+}
+
+/* Mobile: 1 column */
+@media(max-width: 700px){
+  #videos-kido .video-grid,
+  #videos-sakurai .video-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hamburger header */
+.nav-toggle{
+  display:none;
+  width:42px;height:36px;border:0;background:transparent;cursor:pointer;position:relative;
+}
+.nav-toggle span{display:block;height:3px;background:#111;margin:7px 6px;border-radius:2px;transition:transform .2s,opacity .2s}
+@media(max-width: 900px){
+  .nav-toggle{display:block}
+  #site-nav{width:100%;display:none}
+  #site-nav.is-open{display:block}
+  #site-nav a{display:block;padding:10px 0;margin:0;border-top:1px solid var(--border)}
+  .header-inner{align-items:center}
+}
+/* Mobile helper for letter image */
+@media(max-width: 700px){
+  .letter-img{width:80%}
+}
+
+
+/* ===== Polish v2 ===== */
+/* Typo scale */
+:root{--h1: clamp(28px, 3.8vw, 36px); --h2: clamp(22px, 3vw, 30px); --lead: 18px}
+.section-title{font-size:var(--h2); font-weight:800; letter-spacing:.02em}
+h5{font-size:18px; margin:0 0 6px; font-weight:700}
+
+/* Header shadow on scroll */
+.site-header{transition: box-shadow .2s, background-color .2s; backdrop-filter: saturate(150%) blur(4px)}
+.site-header.scrolled{box-shadow:0 8px 20px rgba(0,0,0,.08)}
+
+/* Brand square logo sizing */
+.brand {
+  padding: 12px 0;        /* 上下の余白を大きめに */
+  margin-left: 25px;      /* 左端から少し内側に */
+}
+
+.brand img {
+  width: 140px;           /* ロゴは少し小さめ */
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 20px;    /* 角丸にする */
+  transition: transform 0.4s ease;
+}
+
+.brand img:hover {
+  transform: scale(2); 
+  z-index: 10;            /* 拡大時に前面に */
+}
+
+/* Nav responsive + spacing */
+#site-nav a{padding:8px 10px; border-radius:8px}
+#site-nav a:hover{background:rgba(0,0,0,.05)}
+@media(max-width:900px){
+  .header-inner{gap:10px}
+}
+
+/* Hamburger to X animation */
+.nav-toggle{position:relative}
+.nav-toggle.active span:nth-child(1){transform: translateY(10px) rotate(45deg)}
+.nav-toggle.active span:nth-child(2){opacity:0}
+.nav-toggle.active span:nth-child(3){transform: translateY(-10px) rotate(-45deg)}
+
+/* Buttons style upgrade */
+.btn{padding:12px 20px; border-radius:999px; transition: transform .12s ease, box-shadow .12s ease}
+.btn:hover{transform: translateY(-1px); box-shadow:0 8px 18px rgba(0,0,0,.08)}
+.btn:focus{outline:3px solid rgba(29,184,193,.35); outline-offset:2px}
+
+/* Card media aspect ratios */
+.gallery-4 img, .photo-grid img{aspect-ratio:4/3; object-fit:cover; width:100%}
+
+/* Anchor offset for sticky header */
+[id]{scroll-margin-top:80px}
+
+/* Letter image spacing */
+.letter-img{border-radius:12px}
+
+/* Thanks section tweak */
+.thanks-text{font-size:16px}
+
+
+/* === Fix: letter.jpg should be centered with side margins === */
+.hero img.letter-img,
+.hero .letter-img{
+  width:80% !important;
+  max-width:680px;
+  display:block;
+  margin:16px auto;
+  height:auto;
+}
+
+/* === Header nav text scaling === */
+#site-nav a{
+  font-size: clamp(14px, 1.6vw, 16px);
+}
+@media (max-width: 1100px){
+  #site-nav a{ padding:6px 8px }
+}
+@media (max-width: 900px){
+  #site-nav a{ font-size: 16px; } /* stacked menu */
+}
+
+
+/* top.jpg をPC90% / SP100%に */
+.hero .top-img {
+  width: 90% !important;     /* PCで左右に余白 */
+  max-width: 1200px;
+  margin: 16px auto;
+  display: block;
+}
+@media (max-width: 600px){
+  .hero .top-img {
+    width: 100% !important;  /* スマホは全幅 */
+    margin: 12px auto;
+  }
+}
+
+/* ---- 画像タグ用（トリミング無効化） ---- */
+img {
+  display:block;
+  max-width:100%;
+  height:auto !important;      /* 固定高さを上書き */
+  object-fit:contain !important; /* 切らずに全体表示 */
+}
+
+/* width/height属性がHTMLに書かれていても無効化 */
+img[width], img[height] { width:auto !important; height:auto !important; }
+
+/* ---- よくある犯人：親要素の固定高さ＆はみ出し隠し ---- */
+.hero img,
+.gallery img,
+.photo img {
+  width:100% !important;      /* 画像を枠に合わせて縮小 */
+}
+
+.hero,
+.gallery,
+.photo,
+.gallery__item,
+.hero__item {
+  height:auto !important;      /* 固定高さを解除 */
+  overflow:visible !important; /* 切らさない */
+}
+
+/* ---- もし画像が background-image だった場合の救済 ----
+   上記のクラス名のどれか（例：.top-img, .letter-img）が <div> で
+   背景画像になっているなら、下を当ててください。 */
+.top-img,
+.letter-img,
+.bg-photo {
+  background-size:contain !important;  /* トリミングなし */
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+  /* 背景は高さが必要。任意で最低高さをつける */
+  min-height: 300px; /* 必要に応じて調整 */
+}
+
+.photo-box {
+  text-align: center;     /* 中央揃え */
+  margin: 20px;           /* 写真ごとの余白 */
+}
+
+.photo-box img {
+  max-width: 100%;        /* 枠内に収める */
+  height: auto;
+  display: block;         /* 下の余白調整 */
+  margin: 0 auto;
+}
+
+.photo-box figcaption {
+  margin-top: 8px;        /* 写真と文字の間隔 */
+  font-size: 16px;        /* キャプションの文字サイズ */
+  color: #333;            /* 文字色 */
+  line-height: 1.4;       /* 読みやすさ */
+}
+
+/* --- 画像は切らずに必ず全体表示 --- */
+#videos-kido img {
+  width: 100%;
+  height: auto !important;     /* 固定高さがあっても無効化 */
+  object-fit: contain !important; /* トリミング禁止 */
+  display: block;
+}
+
+/* --- レイアウト（レスポンシブなカードグリッド） --- */
+#videos-kido .video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* --- カード外観 --- */
+#videos-kido .video-card {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  overflow: hidden; /* 角丸に合わせる */
+}
+
+/* --- キャプション（写真下） --- */
+#videos-kido .video-card figcaption {
+  text-align: center;
+  padding: 12px 16px 16px;
+}
+
+#videos-kido .caption-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #222;
+}
+
+/* --- ボタン --- */
+#videos-kido .btn {
+  display: inline-block;
+  padding: 10px 16px;
+  text-decoration: none;
+  border: 1px solid #10b981;    /* お好みで色変更 */
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1;
+  color: #10b981;
+  transition: transform .08s ease, background-color .15s ease, color .15s ease;
+}
+
+#videos-kido .btn:hover {
+  background: #10b981;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* 小さい端末での余白調整（任意） */
+@media (max-width: 480px) {
+  #videos-kido .caption-title { font-size: 16px; }
+  #videos-kido .btn { font-size: 13px; padding: 9px 14px; }
+}
+
+/* 見出し（大きく＆太字、中央） */
+#kido-message .message-title {
+  font-size: 28px;      /* 大きめ */
+  font-weight: bold;    /* 太字 */
+  text-align: center;   /* 中央寄せ */
+  margin-bottom: 20px;
+}
+
+/* 本文（小さめ＆中央） */
+#kido-message .message-text {
+  font-size: 16px;      /* 少し小さめ */
+  line-height: 1.8;     /* 行間ゆったり */
+  text-align: center;   /* 中央寄せ */
+  max-width: 600px;     /* 横幅制限で読みやすく */
+  margin: 0 auto;       /* コンテナ中央に配置 */
+  color: #333;          /* 落ち着いた文字色 */
+}
+
+/* 2×2固定レイアウトにする */
+#videos-kido .video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* ← 2列固定 */
+  gap: 24px;
+  align-items: stretch;  /* カードの高さを揃えやすく */
+}
+
+/* スマホでは1列 */
+@media (max-width: 700px) {
+  #videos-kido .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* カードを枠いっぱいに伸ばす（任意） */
+#videos-kido .video-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#videos-kido .video-card img { display:block; width:100%; height:auto; }
+#videos-kido .video-card figcaption { margin-top:auto; padding:12px 16px; text-align:center; }
+
+#videos-kido .video-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;   /* ← 写真の上に20pxの余白 */
+}
+
+/* ===== EMERGENCY PATCH: video sections ===== */
+
+/* 2×2固定（スマホは1列） */
+#videos-kido .video-grid,
+#videos-sakurai .video-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:24px;
+  justify-content:center;
+}
+@media (max-width:700px){
+  #videos-kido .video-grid,
+  #videos-sakurai .video-grid{ grid-template-columns:1fr; }
+}
+
+/* カード体裁 */
+#videos-kido .video-card,
+#videos-sakurai .video-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  text-align:center;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  padding:0;
+}
+
+/* 画像：切らない＋上に余白 */
+#videos-kido .video-card img,
+#videos-sakurai .video-card img{
+  display:block;
+  width:100%;
+  height:auto !important;
+  object-fit:contain !important;   /* ← coverではなくcontain */
+  margin-top:20px;                 /* ← 上に余白 */
+  border-radius:var(--radius) var(--radius) 0 0;
+}
+
+/* キャプション */
+#videos-kido .video-card figcaption,
+#videos-sakurai .video-card figcaption{
+  padding:12px 16px 16px;
+}
+
+/* ボタン：白文字のまま */
+.btn{
+  display:inline-block;
+  padding:12px 20px;
+  margin:6px;
+  text-decoration:none;
+  border:none;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
+  line-height:1;
+  color:#fff;
+  background:#10b981;
+  transition:background-color .15s ease, transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover{
+  background:#0ea271;
+  color:#fff;            /* ← 文字色は変えない */
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+/* ==== BUTTON COLOR FIX (put at the very end) ==== */
+.video-card .btn,
+.video-card .btn:link,
+.video-card .btn:visited {
+  color: #fff !important;         /* 常に白文字 */
+  background: #10b981 !important; /* 緑背景（お好みで） */
+  border: none !important;        /* 枠線は消す */
+  text-decoration: none !important;
+}
+
+.video-card .btn:hover,
+.video-card .btn:active,
+.video-card .btn:focus {
+  color: #fff !important;         /* ホバーでも白のまま */
+  background: #0ea271 !important; /* 背景だけ少し濃く */
+}
+
+.section-title {
+  font-family: "游明朝体", "Yu Mincho", "Hiragino Mincho ProN", "MS 明朝", serif;
+  font-weight: 700;
+}
